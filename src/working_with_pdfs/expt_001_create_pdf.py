@@ -78,8 +78,60 @@ def create_pdf(filename="hello.pdf"):
     c.save()
 
 
+def draw_title(rl_cs):
+    str_title = "FirstName LastName"
+    x_center = round(PAGE_SIZE[0] // 2, 2)
+    y_top = PAGE_SIZE[1] - 25
+
+    rl_cs.drawCentredString(x_center, y_top, str_title)
+
+    # text_object = rl_cs.beginText(x_center, y_top)
+    # text_object.setFont(PS_FONT_NAME, 16, leading=None)
+    # rl_cs.drawText(text_object)
+
+
+def draw_info(rl_cs):
+    pass
+
+
+def draw_line(rl_cs):
+    pass
+
+
+def draw_skills(rl_cs):
+    pass
+
+
+def draw_components(rl_cs):
+    draw_title(rl_cs)
+    draw_info(rl_cs)
+    draw_line(rl_cs)
+    draw_skills(rl_cs)
+
+
+def format_resume(rl_cs):
+    # Guiding box
+    x = 25  # round(PAGE_SIZE[0] // 2, 2)
+    y = 25  # round(PAGE_SIZE[1] // 2, 2)
+    width = PAGE_SIZE[0] - 50
+    height = PAGE_SIZE[1] - 50
+    rl_cs.rect(x, y, width, height, stroke=1, fill=0)
+
+    draw_components(rl_cs)
+
+    rl_cs.showPage()
+    rl_cs.save()
+
+
+def create_formatted_pdf(filename="formatted.pdf"):
+    filepath = os.path.join(DIR_OUTPUT, filename)
+    c = canvas.Canvas(filepath)
+
+    format_resume(c)
+
+
 def main():
-    create_pdf()
+    create_formatted_pdf()
 
 
 if __name__ == '__main__':
