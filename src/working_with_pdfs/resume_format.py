@@ -258,9 +258,9 @@ def check_line_counter():
     print(lc.next_line())
 
     lc2 = LineCounter()
-    print(lc.next_line())
-    print(lc.next_line())
-    print(lc.next_line())
+    print(lc2.next_line())
+    print(lc2.next_line())
+    print(lc2.next_line())
 
 
 if __name__ == '__main__':
