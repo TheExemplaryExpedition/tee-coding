@@ -1,5 +1,6 @@
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import Preformatted
+from reportlab.platypus import Paragraph
 import os
 from reportlab.pdfgen import canvas
 
@@ -39,10 +40,19 @@ def format_resume(rl_cs):
     rl_cs.save()
 
 
+from reportlab.lib.styles import ParagraphStyle as PS
+
+
 def create_formatted_pdf(filename="code.pdf"):
     filepath = os.path.join(DIR_OUTPUT, filename)
     c = canvas.Canvas(filepath)
-
+    h1 = PS(name='Heading1',
+            fontSize=14,
+            leading=16)
+    p = Paragraph('First <b>heading</b>')
+    # Reference: https://reportlab-users.reportlab.narkive.com/BEuO6FFQ/attributeerror-xpreformatted-instance-has-no-attribute-blpara
+    p.wrap(200, 200)
+    p.drawOn(c, 100, 100)
     format_resume(c)
 
 
@@ -51,4 +61,5 @@ def main():
 
 
 if __name__ == '__main__':
+    main()
     get_para()
