@@ -9,8 +9,13 @@ LINE_CAP = ""
 LINE_JOIN = ""
 MITER_LIMIT = 0
 PAGE_SIZE = (595.26, 841.88)  # page size for A4 -- points 1/72 inch
-LINE_HEIGHT = 15
+LINE_HEIGHT = 12
 MARGIN = 25
+
+dict_indent_levels = {
+    "headers": MARGIN + 10,
+    "bullet": MARGIN + 20
+}
 
 
 # class SingletonClass(object):
@@ -186,7 +191,7 @@ class ResumeFormat:
 
         return self
 
-    def add_description(self, str_left, str_right):
+    def add_experience_header(self, str_left, str_right):
         """
         Common type of Descriptions have str_left and str_right.
         Sometimes str_right can be empty, so it's fine.
@@ -196,7 +201,7 @@ class ResumeFormat:
         """
         self.set_font_style(text_type="description")
 
-        coord_x_left = MARGIN
+        coord_x_left = dict_indent_levels["headers"]
         coord_x_right = PAGE_SIZE[0] - MARGIN
         coord_y = self.lc.next_line()
 
@@ -204,6 +209,23 @@ class ResumeFormat:
         self.rfc.drawRightString(coord_x_right, coord_y, str_right)
 
         return self
+
+    def add_bullet_point(self, str_text, bullet="circle", fill=0):
+
+        coord_x = dict_indent_levels["bullet"]
+        coord_y = self.lc.next_line()
+        coord_by = coord_y + LINE_HEIGHT // 4
+
+        if bullet == "circle":
+            self.rfc.circle(coord_x, coord_by, 2, stroke=1, fill=fill)
+
+        elif bullet == "round_rect":
+            coord_bx = coord_x - 3
+            coord_by = coord_y + LINE_HEIGHT // 4
+            self.rfc.roundRect(coord_bx, coord_y, 6, 4, 1, stroke=1, fill=fill)
+
+        coord_x += 5
+        self.rfc.drawString(coord_x, coord_y, str_text)
 
     def save_resume(self):
         self.rfc.showPage()
@@ -235,6 +257,9 @@ class ResumeData:
         }
         return dict_values
 
+    def get_bullet(self):
+        return "".join(["abda"] * 10)
+
 
 def main():
     obj_rf = ResumeFormat("xyz.pdf")
@@ -245,7 +270,9 @@ def main():
     obj_rf.draw_horizontal_line()
 
     obj_rf.add_heading(**obj_rd.get_heading())
-    obj_rf.add_description(**obj_rd.get_description())
+    obj_rf.add_experience_header(**obj_rd.get_description())
+    obj_rf.add_bullet_point(obj_rd.get_bullet(), "circle")
+    obj_rf.add_bullet_point(obj_rd.get_bullet(), "round_rect")
     obj_rf.draw_horizontal_line()
 
     obj_rf.save_resume()
