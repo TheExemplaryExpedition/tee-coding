@@ -1,4 +1,5 @@
 from reportlab.pdfgen import canvas
+from reportlab.platypus import Paragraph
 import os
 
 DIR_OUTPUT = "../../outputs"
@@ -227,6 +228,27 @@ class ResumeFormat:
         coord_x += 5
         self.rfc.drawString(coord_x, coord_y, str_text)
 
+    def add_skills(self, title, list_skills, bullet="circle", fill=0):
+        str_text = Paragraph(f'<b>{title}</b>: {list_skills}')
+
+        coord_x = dict_indent_levels["bullet"]
+        coord_y = self.lc.next_line()
+        coord_by = coord_y + LINE_HEIGHT // 4
+
+        if bullet == "circle":
+            self.rfc.circle(coord_x, coord_by, 2, stroke=1, fill=fill)
+
+        elif bullet == "round_rect":
+            coord_bx = coord_x - 3
+            coord_by = coord_y + LINE_HEIGHT // 4
+            self.rfc.roundRect(coord_bx, coord_y, 6, 4, 1, stroke=1, fill=fill)
+
+        coord_x += 5
+        # TODO: Parameterize the wrap to fit the text appropriately
+        str_text.wrap(200, 200)
+        str_text.drawOn(self.rfc, coord_x, coord_y)
+        # self.rfc.drawString(coord_x, coord_y, str_text)
+
     def save_resume(self):
         self.rfc.showPage()
         self.rfc.save()
@@ -273,6 +295,13 @@ def main():
     obj_rf.add_experience_header(**obj_rd.get_description())
     obj_rf.add_bullet_point(obj_rd.get_bullet(), "circle")
     obj_rf.add_bullet_point(obj_rd.get_bullet(), "round_rect")
+    obj_rf.draw_horizontal_line()
+
+    skill = "Coding"
+    list_skills = ["Python", "R", "SQL"]
+    obj_rf.add_heading("SKILLS")
+    obj_rf.add_skills(skill, list_skills, "circle")
+    obj_rf.add_skills(skill, list_skills, "round_rect")
     obj_rf.draw_horizontal_line()
 
     obj_rf.save_resume()
