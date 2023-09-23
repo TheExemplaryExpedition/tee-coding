@@ -53,7 +53,13 @@ skills:
             - "C++"
 education:
     - edu_0:
-        school_name: "University0"
+        degree: "MS"
+        course: "Data Science"
+        school_name: "UniversityTwo"
+        location:
+            city: "Boston"
+            state: "MA"
+            country: "USA"
         graduation_date:
             month: "MM"
             year: "YYYY"
@@ -62,7 +68,13 @@ education:
               - "Machine Learning"
               - "Computer Vision"
     - edu_1:
+        degree: "MTech"
+        course: "Computer Science"
         school_name: "UniversityOne"
+        location:
+            city: "Bengaluru"
+            state: "KA"
+            country: "India"
         graduation_date:
             month: "MM"
             year: "YYYY"
