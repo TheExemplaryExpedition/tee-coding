@@ -6,34 +6,56 @@ github_username: "resume"
 linkedin_username: "resume"
 experiences:
     - company_0:
-        company_name: "CompanyNameZero"
-        designation: "Machine Learning Engineer"
-        location:
-            city: "San Francisco"
-            state: "CA"
-            country: "USA"
-        start_month: "MM"
-        start_year: "YYYY"
-        end_month: "MM"
-        end_year: "YYYY"
+        details:
+            company_name: "CompanyNameZero"
+            designation: "Machine Learning Engineer"
+            location:
+                city: "San Francisco"
+                state: "CA"
+                country: "USA"
+            start_month: "MM"
+            start_year: "YYYY"
+            end_month: "MM"
+            end_year: "YYYY"
         description:
-            - "This is one"
-            - "This is two"
+            - role_one:
+                tags: "ML, CV"
+                name: "MLE"
+                work:
+                    - "This is MLE one"
+                    - "This is two"
+            - role_two:
+                tags: "Data Engineering, CV"
+                name: "MLE"
+                work:
+                    - "This is DE one"
+                    - "This is DE two"
 
     - company_1:
-        company_name: "CompanyNameOne"
-        designation: "Machine Learning Engineer"
-        location:
-            city: "San Francisco"
-            state: "CA"
-            country: "USA"
-        start_month: "MM"
-        start_year: "YYYY"
-        end_month: "MM"
-        end_year: "YYYY"
+        details:
+            company_name: "CompanyNameOne"
+            designation: "Machine Learning Engineer"
+            location:
+                city: "San Francisco"
+                state: "CA"
+                country: "USA"
+            start_month: "MM"
+            start_year: "YYYY"
+            end_month: "MM"
+            end_year: "YYYY"
         description:
-            - "This is one"
-            - "This is two"
+            - role_one:
+                tags: "ML, CV"
+                name: "MLE"
+                work:
+                    - "This is MLE one"
+                    - "This is two"
+            - role_two:
+                tags: "Data Engineering, CV"
+                name: "MLE"
+                work:
+                    - "This is DE one"
+                    - "This is DE two"
 
 skills:
     - group_0:
@@ -65,8 +87,8 @@ education:
             year: "YYYY"
         gpa: "4.0/4.0"
         courses:
-              - "Machine Learning"
-              - "Computer Vision"
+            - "Machine Learning"
+            - "Computer Vision"
     - edu_1:
         degree: "MTech"
         course: "Computer Science"
@@ -80,5 +102,5 @@ education:
             year: "YYYY"
         gpa: "7.0/10.0"
         courses:
-              - "Reinforcement Learning"
-              - "Computer Vision"
+            - "Reinforcement Learning"
+            - "Computer Vision"
