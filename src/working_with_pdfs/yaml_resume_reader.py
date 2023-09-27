@@ -38,6 +38,18 @@ class ResumeReader:
     def get_experiences(self):
         return self.dict_data["experiences"]
 
+    def get_exp_number_of_years(self):
+        """
+        Calculate total number of years based on the start and end dates
+        Exclude present job and calculate till present
+        :return:
+        """
+        number_of_years = 0
+        for experience, details in self.dict_data["experiences"]:
+            pass
+
+        return number_of_years
+
     def get_education(self):
         return self.dict_data["education"]
 
