@@ -50,6 +50,27 @@ class ResumeReader:
 
         return number_of_years
 
+    def get_start_date(self, dict_experience):
+        """
+        Given a dictionary of experience, return start date
+        :param dict_experience:
+        :return:
+        """
+        yyyy = dict_experience["start_year"]
+        mm = dict_experience["start_month"]
+        dd = dict_experience.get("start_day", 1)
+        return self.get_formatted_date(yyyy, mm, dd)
+
+    def get_formatted_date(self, yyyy, mm, dd=1):
+        """
+        Support multiple formatting options
+        :param yyyy:
+        :param mm:
+        :param dd:
+        :return:
+        """
+        return f"{yyyy}-{mm:02}-{dd:02}"
+
     def get_education(self):
         return self.dict_data["education"]
 
