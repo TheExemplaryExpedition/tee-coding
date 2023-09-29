@@ -50,15 +50,16 @@ class ResumeReader:
 
         return number_of_years
 
-    def get_start_date(self, dict_experience):
+    def get_date(self, dict_experience, prefix="start"):
         """
-        Given a dictionary of experience, return start date
+        Given a dictionary of experience, return start date if prefix=start
         :param dict_experience:
+        :param prefix: "start" or "end"
         :return:
         """
-        yyyy = dict_experience["start_year"]
-        mm = dict_experience["start_month"]
-        dd = dict_experience.get("start_day", 1)
+        yyyy = dict_experience[f"{prefix}_year"]
+        mm = dict_experience[f"{prefix}_month"]
+        dd = dict_experience.get(f"{prefix}_day", 1)
         return self.get_formatted_date(yyyy, mm, dd)
 
     def get_formatted_date(self, yyyy, mm, dd=1):
