@@ -72,6 +72,9 @@ class ResumeReader:
         """
         return f"{yyyy}-{mm:02}-{dd:02}"
 
+    def get_work_description(self, dict_experience):
+        return dict_experience["description"]["work"]
+
     def get_education(self):
         return self.dict_data["education"]
 
