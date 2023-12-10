@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+/* Resetting some of the default CSS settings */
+* {
+    margin: 0; /* No margin for all the elements */
+    padding: 0; /* No padding for all the elements */
+    box-sizing: border-box; /* Selecting the level of relative measurements */
+}
+
+/* Use body tag to set the font style for the contents.*/
+body {
+    margin: 0.5rem; /* Top left right bottom*/
+    font-family: 'Lora', serif; /* Main font; Fallback font */
+    text-align: center; /* Alignment for the elements */
+}
+
+/* Use a different styling for nav */
+nav { /* Block element */
+    border: 2px solid #303; /* Top left right bottom */
+    border-radius: 2rem; /* Rounding the corners */
+    margin: 0 auto 1rem; /* Top left right bottom */
+    max-width: 600px; /* To limit the width of nav element while growing relative page display size */
+}
