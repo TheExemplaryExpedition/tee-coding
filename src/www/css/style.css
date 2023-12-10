@@ -16,8 +16,49 @@ body {
 
 /* Use a different styling for nav */
 nav { /* Block element */
-    border: 2px solid #303; /* Top left right bottom */
+    border: 2px solid #303; /* "thickness" "border-style" "color" */
     border-radius: 2rem; /* Rounding the corners */
-    margin: 0 auto 1rem; /* Top left right bottom */
+    margin: 0 auto 1rem; /* Top right left bottom */
     max-width: 600px; /* To limit the width of nav element while growing relative page display size */
+    font-size: 1.2rem;
+    line-height: 2rem;
+}
+
+nav h2 { /* Block element */
+    padding: 1rem;
+    background: orange;
+    border-radius: 2rem 2rem 0 0; /* Rounding the corners to match the nav rounding */
+}
+
+nav ul {
+    list-style-position: inside; /* To make the bullet design closer to the text and change with alignment */
+    list-style-type: none; /* Remove the bullets */
+
+}
+
+
+nav ul li {
+    border-top: 1px solid #303; /* "thickness" "border-style" "color" */
+
+}
+
+nav ul li a{ /* Anchor tag is by default a in-line level element*/
+    display: block; /* Make Anchor tag display from in-line to block level element*/
+}
+
+nav ul li a,
+nav ul li a:visited {
+    text-decoration: none; /* To avoid color change before/after the link is visited */
+    color: #303;
+}
+
+nav ul li a:hover,
+nav ul li a:focus { /* hover and focus special event selectors*/
+    background: #303; /* Text background; However, this won't be enough to get the desired output */
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+nav ul li:last-child a{
+    border-radius: 0 0 2rem 2rem; /* Rounding the corners to match the nav rounding */
 }
